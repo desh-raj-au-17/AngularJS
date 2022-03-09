@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+    <title>ng-reapeat</title>
+  </head>
+  <body ng-controller="myController">
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Company</th>
+          <th>Gender</th>
+          <th>Salary</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees">
+          <td>{{employee.firstName}}</td>
+          <td>{{employee.lastName}}</td>
+          <td>{{employee.company}}</td>
+          <td>{{employee.gender}}</td>
+          <td>{{employee.salary}}</td>
+          <td>{{employee.salary}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <!-- nested ng-repeat below -->
+    <ul>
+      <li ng-repeat="country in countries" ng-init="parentIndex = $index">
+        {{country.name}} - Index = {{$index}}
+        <ul>
+          <li ng-repeat="city in country.cities">
+            {{city.name}} - Parent Index = {{ parentIndex }} - Index =
+            {{$index}}
+
+            <!-- or to get parent index use $parent.$index insted of parentIndex -->
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
